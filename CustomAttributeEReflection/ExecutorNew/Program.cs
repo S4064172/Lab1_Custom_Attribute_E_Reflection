@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Reflection;
+using MyAttribute;
+    
 
-
-namespace Executor
+namespace ExecutorNew
 {
     class Program
     {
@@ -12,21 +13,37 @@ namespace Executor
             Console.ReadKey();
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Hello World!");
             Wait();
 
            
-            var _listType = Assembly.LoadFrom("MyLibrary.dll");
-            foreach (var type in _listType.GetTypes())
+            var listType = Assembly.LoadFrom("MyLibrary.dll");
+            foreach (var type in listType.GetTypes())
             {
                 if (type.IsClass)
                     Console.WriteLine(type.FullName);
                 Wait();
             }
 
+            Wait();
 
+            foreach (var typeClass in listType.GetTypes())
+            {
+                if (typeClass.IsClass)
+                    foreach (var typeMethod in typeClass.GetMethods())
+                    {
+                        if (!typeMethod.IsPublic)
+                            continue;
+                        foreach (var typeAttribute in typeMethod.GetCustomAttributes<ExecuteMeAttribute>())
+                        {
+                            typeMethod.Invoke(Activator.CreateInstance(typeClass), typeAttribute.GetParams());
+                            Wait();
+                        }
+                    }
+                Wait();
+            }
 
         }
     }

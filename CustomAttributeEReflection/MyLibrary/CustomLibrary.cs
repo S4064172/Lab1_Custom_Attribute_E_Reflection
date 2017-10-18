@@ -8,22 +8,22 @@ namespace MyLibrary
     {
         private int _first;
 
-        myClass_1()
+        public myClass_1()
         {
             _first = 0;
             Console.WriteLine("new value-->" + _first);
         }
 
-        [ExecuteMe("test1","reflection","ready","relace")]
-        [ExecuteMe("test2", "reflection", "ready", "relace")]
+        [ExecuteMe(5)]
+        [ExecuteMe(10)]
         public void Method1(int fisrt)
         {
             _first = fisrt;
             Console.WriteLine("new value-->" + _first);
         }
 
-        [ExecuteMe("test1", "reflection", "ready","add")]
-        [ExecuteMe("test2", "reflection", "ready", "add")]
+        [ExecuteMe(20)]
+        [ExecuteMe(30)]
         public void Method2(int fisrt)
         {
             _first += fisrt;
@@ -36,22 +36,22 @@ namespace MyLibrary
     {
         private string _first;
 
-        myClass_2()
+        public myClass_2()
         {
             _first = null;
             Console.WriteLine("new value-->" + _first);
         }
 
-        [ExecuteMe("test1", "reflection", "ready", "relace")]
-        [ExecuteMe("test2", "reflection", "ready", "relace")]
+        [ExecuteMe("_test1")]
+        [ExecuteMe("_test2")]
         public void Method1(string fisrt)
         {
             _first = fisrt;
             Console.WriteLine("new value-->" + _first);
         }
 
-        [ExecuteMe("test1", "reflection", "ready", "add")]
-        [ExecuteMe("test2", "reflection", "ready", "add")]
+        [ExecuteMe("_test1")]
+        [ExecuteMe("_test2")]
         public void Method2(string fisrt)
         {
             _first += " "+fisrt;
