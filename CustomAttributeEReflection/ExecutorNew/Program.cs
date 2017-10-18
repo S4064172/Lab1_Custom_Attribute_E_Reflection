@@ -19,7 +19,6 @@ namespace ExecutorNew
             Console.WriteLine("Hello World!");
             Wait();
 
-           
             var listType = Assembly.LoadFrom("MyLibrary.dll");
             
             foreach (var type in listType.GetTypes())
@@ -44,10 +43,15 @@ namespace ExecutorNew
                             {
                                 typeMethod.Invoke(Activator.CreateInstance(typeClass), typeAttribute.GetParams());
                             }
-                            catch (Exception e)
+                            catch (TargetParameterCountException e)
                             {
                                 Debug.WriteLine(e.Message);
-                                Console.WriteLine("Cannot invoke {0} method",typeMethod.Name);
+                                Console.WriteLine("Cannot invoke {0} method because the arguments does not match with attribute's arguments {1}", typeMethod.Name,e.GetType());
+                            }
+                            catch (MissingMethodException e1)
+                            {
+                                Debug.WriteLine(e1.Message);
+                                Console.WriteLine("Cannot invoke {0} method because the default constructor is absent {1}",typeMethod.Name,e1.GetType());
                             }
 
                         }

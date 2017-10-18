@@ -58,7 +58,7 @@ namespace MyLibrary
         }
 
         [ExecuteMe("_test1")]
-        [ExecuteMe("_test2")]
+        [ExecuteMe("_test2","_test3")] //this attribute is not correct for this method because has 2 args
         public void Method2(string fisrt)
         {
             _first += " "+fisrt;
@@ -69,7 +69,7 @@ namespace MyLibrary
     class myClass_3
     {
         private string _first;
-
+       
         public myClass_3(string first)
         {
             _first = first;
