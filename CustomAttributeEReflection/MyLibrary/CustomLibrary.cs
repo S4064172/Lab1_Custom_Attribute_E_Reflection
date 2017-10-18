@@ -4,11 +4,11 @@ using MyAttribute;
 namespace MyLibrary
 {
     
-    class myClass_1
+    class MyClass1
     {
         private int _first;
 
-        public myClass_1()
+        public MyClass1()
         {
             _first = 0;
         }
@@ -40,11 +40,11 @@ namespace MyLibrary
     }
 
 
-    class myClass_2
+    class MyClass2
     {
         private string _first;
 
-        public myClass_2()
+        public MyClass2()
         {
             _first = null;
         }
@@ -66,11 +66,11 @@ namespace MyLibrary
         }
     }
 
-    class myClass_3
+    class MyClass3
     {
         private string _first;
        
-        public myClass_3(string first)
+        public MyClass3(string first)
         {
             _first = first;
         }
