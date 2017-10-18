@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MyLibrary">
+      <HintPath>..\MyLibrary\bin\Debug\MyLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,10 +56,6 @@
     <ProjectReference Include="..\MyAttribute\MyAttribute.csproj">
       <Project>{10b37bb8-14cd-4eed-9a8d-09ad00a609db}</Project>
       <Name>MyAttribute</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyLibrary\MyLibrary.csproj">
-      <Project>{b2676e02-1ee9-402f-b302-da65f9edd020}</Project>
-      <Name>MyLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

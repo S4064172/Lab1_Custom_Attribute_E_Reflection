@@ -11,7 +11,6 @@ namespace MyLibrary
         public myClass_1()
         {
             _first = 0;
-            Console.WriteLine("new value-->" + _first);
         }
 
         [ExecuteMe(5)]
@@ -19,7 +18,7 @@ namespace MyLibrary
         public void Method1(int fisrt)
         {
             _first = fisrt;
-            Console.WriteLine("new value-->" + _first);
+            Console.WriteLine("Method1 : new value-->" + _first);
         }
 
         [ExecuteMe(20)]
@@ -27,7 +26,16 @@ namespace MyLibrary
         public void Method2(int fisrt)
         {
             _first += fisrt;
-            Console.WriteLine("new value-->" + _first);
+            Console.WriteLine("Method2 : new value-->" + _first);
+        }
+
+        //this method is visible only if u build this project
+        [ExecuteMe(5)]
+        public void Method3(int first)
+        {
+            _first *= first;
+            Console.WriteLine("Method3 : new value-->" + _first);
+
         }
     }
 
@@ -39,7 +47,6 @@ namespace MyLibrary
         public myClass_2()
         {
             _first = null;
-            Console.WriteLine("new value-->" + _first);
         }
 
         [ExecuteMe("_test1")]
@@ -47,7 +54,7 @@ namespace MyLibrary
         public void Method1(string fisrt)
         {
             _first = fisrt;
-            Console.WriteLine("new value-->" + _first);
+            Console.WriteLine("Method1 : new value-->" + _first);
         }
 
         [ExecuteMe("_test1")]
@@ -55,9 +62,29 @@ namespace MyLibrary
         public void Method2(string fisrt)
         {
             _first += " "+fisrt;
-            Console.WriteLine("new value-->" + _first);
+            Console.WriteLine("Method2 : new value-->" + _first);
+        }
+    }
+
+    class myClass_3
+    {
+        private string _first;
+
+        public myClass_3(string first)
+        {
+            _first = first;
+        }
+
+        [ExecuteMe("_test1")]
+        [ExecuteMe("_test2")]
+        public void Method1(string fisrt)
+        {
+            _first = fisrt;
+            Console.WriteLine("Method1 : new value-->" + _first);
         }
         
-
     }
+
+
 }
+
