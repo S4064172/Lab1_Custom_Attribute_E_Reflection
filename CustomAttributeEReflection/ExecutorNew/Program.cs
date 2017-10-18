@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using System.Reflection.Metadata;
-using MyLibrary;
+
 
 namespace Executor
 {
@@ -18,13 +17,11 @@ namespace Executor
             Console.WriteLine("Hello World!");
             Wait();
 
-            CustomAttribute _customAttribute;
-            CustomLibrary _customLibrary;
-
+           
             var _listType = Assembly.LoadFrom("MyLibrary.dll");
             foreach (var type in _listType.GetTypes())
             {
-                if(type.IsClass)
+                if (type.IsClass)
                     Console.WriteLine(type.FullName);
                 Wait();
             }
