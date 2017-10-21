@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using MyAttribute;
     
@@ -41,7 +42,7 @@ namespace ExecutorNew
                         {
                             try
                             {
-                                typeMethod.Invoke(Activator.CreateInstance(typeClass), typeAttribute.GetParams());
+                               typeMethod.Invoke(Activator.CreateInstance(typeClass), typeAttribute.GetParams());
                             }
                             catch (TargetParameterCountException e)
                             {

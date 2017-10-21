@@ -70,6 +70,7 @@ namespace MyLibrary
     {
         private string _first;
        
+        [CustomConstructor("string")]
         public MyClass3(string first)
         {
             _first = first;

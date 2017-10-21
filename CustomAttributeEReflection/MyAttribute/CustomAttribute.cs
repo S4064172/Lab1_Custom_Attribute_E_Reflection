@@ -18,4 +18,22 @@ namespace MyAttribute
             return _myParams;
         }
     }
+
+
+    [AttributeUsage(AttributeTargets.Constructor, AllowMultiple = true)]
+    public class CustomConstructorAttribute : Attribute
+    {
+        private object[] _myParams;
+
+        public CustomConstructorAttribute(params object[] parm)
+        {
+            _myParams = parm;
+        }
+
+        public object[] GetParams()
+        {
+            return _myParams;
+        }
+
+    }
 }
