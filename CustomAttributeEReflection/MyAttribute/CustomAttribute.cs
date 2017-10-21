@@ -1,12 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MyAttribute
 {
-    public class CustomAttribute
+    [AttributeUsage(AttributeTargets.Method,AllowMultiple = true)]
+    public class ExecuteMeAttribute : Attribute
     {
+        private object[] _myParams;
+
+        public ExecuteMeAttribute(params object[] parm)
+        {
+           _myParams = parm;
+        }
+
+        public object[] GetParams()
+        {
+            return _myParams;
+        }
     }
 }
