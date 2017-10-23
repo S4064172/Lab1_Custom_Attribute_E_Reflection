@@ -70,11 +70,19 @@ namespace MyLibrary
     {
         private string _first;
        
+        [CustomConstructor("string","string")]
+        public MyClass3(string first, int a)
+        {
+            Console.WriteLine("yeah");
+            _first = first;
+        }
+
         [CustomConstructor("string")]
         public MyClass3(string first)
         {
             _first = first;
         }
+
 
         [ExecuteMe("_test1")]
         [ExecuteMe("_test2")]
