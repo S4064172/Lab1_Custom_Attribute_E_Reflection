@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
-using System.Threading;
 using MyAttribute;
     
 
@@ -16,6 +13,8 @@ namespace ExecutorNew
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
+
+      
 
         static void Main()
         {
@@ -58,12 +57,13 @@ namespace ExecutorNew
                                
                                 foreach (var typeConstructors in typeClass.GetConstructors())
                                 {
+                                    
                                     foreach (var typeConstructorAttribute in typeConstructors.GetCustomAttributes<CustomConstructorAttribute>())
                                     {
                                         Console.Write("\nDo you want use this constructor : ");
                                         foreach (var param in typeConstructors.GetParameters())
                                         {
-                                            Console.Write(param.ParameterType + " ");
+                                            Console.Write(param.ParameterType + "(Optional:{0})" + " ", param.IsOptional);
                                             /*Console.WriteLine(string.Format("Param {0} is named {1} and is of type {2}",
                                                 param.Position, param.Name, param.ParameterType));*/
                                         }
@@ -75,17 +75,31 @@ namespace ExecutorNew
                                             object[] att = new object[index];
                                             for (var i = 0; i < index; i++)
                                             {
-                                                Console.Write("\ninsert element of type {0} -->", typeConstructors.GetParameters()[i].ParameterType);
-                                                att[i] = Convert.ChangeType(Console.ReadLine(), typeConstructors.GetParameters()[i].ParameterType);
+                                                if (typeConstructors.GetParameters()[i].IsOptional)
+                                                {
+                                                    Console.Write("\n element of type {0} is optional, do u want insert that? [y][any other key] \n ->>", typeConstructors.GetParameters()[i].ParameterType);
+                                                    var key1 = Console.ReadKey().KeyChar;
+                                                    if (key1 == 'y')
+                                                    {
+                                                        Console.Write("\ninsert element --->");
+                                                        att[i] = Convert.ChangeType(Console.ReadLine(), typeConstructors.GetParameters()[i].ParameterType);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    Console.Write("\ninsert element of type {0} -->", typeConstructors.GetParameters()[i].ParameterType);
+                                                    att[i] = Convert.ChangeType(Console.ReadLine(), typeConstructors.GetParameters()[i].ParameterType);
+                                                }
+                                               
                                             }
                                             typeMethod.Invoke(typeConstructors.Invoke(att), typeAttribute.GetParams());
-                                            goto executeContructor;
+                                            goto executeConstructor;
                                         }
                                         
                                     }
 
                                 }
-                                executeContructor:;
+                                executeConstructor:;
                             }
 
                         }

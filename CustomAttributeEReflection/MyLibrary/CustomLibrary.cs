@@ -69,12 +69,18 @@ namespace MyLibrary
     class MyClass3
     {
         private string _first;
+        private int _a;
+        private int _b;
+        private string _second;
        
         [CustomConstructor("string","string")]
-        public MyClass3(string first, int a)
+        public MyClass3(string first, int a, int b = 5 ,string second = "second")
         {
-            Console.WriteLine("yeah");
+            Console.WriteLine("yeah ");
             _first = first;
+            _a = a;
+            _b = b;
+            _second = second;
         }
 
         [CustomConstructor("string")]
@@ -89,7 +95,7 @@ namespace MyLibrary
         public void Method1(string fisrt)
         {
             _first = fisrt;
-            Console.WriteLine("Method1 : new value-->" + _first);
+            Console.WriteLine("Method1 : new value-->" + _first+" "+_a+" "+_b+" "+_second+" ");
         }
         
     }

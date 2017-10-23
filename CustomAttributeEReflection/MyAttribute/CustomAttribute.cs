@@ -20,7 +20,7 @@ namespace MyAttribute
     }
 
 
-    [AttributeUsage(AttributeTargets.Constructor, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Constructor, AllowMultiple = false)]
     public class CustomConstructorAttribute : Attribute
     {
         private object[] _myParams;
