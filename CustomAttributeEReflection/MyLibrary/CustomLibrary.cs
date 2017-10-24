@@ -73,10 +73,10 @@ namespace MyLibrary
         private int _b;
         private string _second;
        
-        [CustomConstructor("string","string")]
+        [CustomConstructor("string","int","int","string")]
         public MyClass3(string first, int a, int b = 5 ,string second = "second")
         {
-            Console.WriteLine("yeah ");
+            Console.WriteLine("yeah "+a);
             _first = first;
             _a = a;
             _b = b;
@@ -94,8 +94,8 @@ namespace MyLibrary
         [ExecuteMe("_test2")]
         public void Method1(string fisrt)
         {
-            _first = fisrt;
-            Console.WriteLine("Method1 : new value-->" + _first+" "+_a+" "+_b+" "+_second+" ");
+            _first += " "+fisrt;
+            Console.WriteLine("Method1 : new value-->" + _first+" "+_a+" "+_b+" "+_second+"");
         }
         
     }
