@@ -73,7 +73,7 @@ namespace MyLibrary
         private int _b;
         private string _second;
        
-        [CustomConstructor("string","int","int","string")]
+        [CustomConstructor("string",5,6,"string")]
         public MyClass3(string first, int a, int b = 5 ,string second = "second")
         {
             Console.WriteLine("yeah "+a);
@@ -95,6 +95,7 @@ namespace MyLibrary
         public void Method1(string fisrt)
         {
             _first += " "+fisrt;
+            var t = new MyClass3("",5,second:"");
             Console.WriteLine("Method1 : new value-->" + _first+" "+_a+" "+_b+" "+_second+"");
         }
         

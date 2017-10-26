@@ -26,7 +26,7 @@ namespace ExecutorNew
             foreach (var type in listType.GetTypes())
             {
                 if (type.IsClass)
-                    Console.WriteLine("This class is this project-->" + type.FullName);
+                    Console.WriteLine("This class is in this project-->" + type.FullName);
             }
 
             Wait();
